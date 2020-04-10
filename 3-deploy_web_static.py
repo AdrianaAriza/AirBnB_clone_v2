@@ -14,6 +14,7 @@ def deploy():
 
 
 def do_deploy(archive_path):
+    """"""
     if not os.path.exists(archive_path):
         return False
     try:
@@ -30,7 +31,7 @@ def do_deploy(archive_path):
         run("rm -rf /data/web_static/current")
         run("ln -s {} /data/web_static/current".format(n3))
         return True
-    except:
+    except TypeError:
         return False
 
 
@@ -44,5 +45,5 @@ def do_pack():
         f_name = "versions/web_static_{}.tgz".format(date.strftime(format))
         local('tar -cvzf {} web_static'.format(f_name))
         return f_name
-    except:
+    except TypeError:
         return None
