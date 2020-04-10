@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# distributes an archive to web servers
+# 
 import os
 from fabric.api import *
 
@@ -8,6 +8,7 @@ env.user = "ubuntu"
 
 
 def do_deploy(archive_path):
+    """"""
     if not os.path.exists(archive_path):
         return False
     try:
@@ -24,5 +25,5 @@ def do_deploy(archive_path):
         run("rm -rf /data/web_static/current")
         run("ln -s {} /data/web_static/current".format(n3))
         return True
-    except:
+    except TypeError:
         return False
