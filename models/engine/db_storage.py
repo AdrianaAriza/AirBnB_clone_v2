@@ -12,7 +12,7 @@ classes = {"Amenity": Amenity, "City": City,
            "Place": Place, "Review": Review, "State": State, "User": User}
 
 
-class DBStorage():
+class DBStorage:
     """
     """
     __engine = None
@@ -38,7 +38,7 @@ class DBStorage():
                 for obj in objs:
                     key = obj.__class__.__name__ + '.' + obj.id
                     new_dict[key] = obj
-        return (new_dict)
+        return new_dict
 
     def new(self, obj):
         """
@@ -61,4 +61,7 @@ class DBStorage():
         """
         Base.metadata.create_all(self.__engine)
         Session = sessionmaker(bind=self.__engine, expire_on_commit=False)
-        self.__session = scoped_session(Session)()
+        self.__session = scoped_session(Session)
+
+    def close(self):
+        self.__session.remove()

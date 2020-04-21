@@ -63,7 +63,10 @@ class FileStorage:
         """delete obj from __objects if its ..inside"""
         if obj:
             try:
-                key = (type(obj).__name__) + "." + obj.id
+                key = type(obj).__name__ + "." + obj.id
                 del self.__objects[key]
             except FileNotFoundError:
                 pass
+
+    def close(self):
+        self.reload()
