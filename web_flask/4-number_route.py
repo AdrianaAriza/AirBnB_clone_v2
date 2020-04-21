@@ -35,4 +35,5 @@ def number(n):
     return '{} is a number'.format(n)
 
 
-app.run()
+if __name__ == "__main__":
+    app.run()

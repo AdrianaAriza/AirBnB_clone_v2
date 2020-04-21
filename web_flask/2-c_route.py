@@ -21,6 +21,7 @@ def variable(text):
     return 'C {}'.format(text).replace('_', ' ')
 
 
-app.run()
+if __name__ == "__main__":
+    app.run()
 
 
