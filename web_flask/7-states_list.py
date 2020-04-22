@@ -16,9 +16,9 @@ def state_list():
 
 
 @app.teardown_appcontext
-def close():
+def close(error):
     """"""
-    storage.close(error)
+    storage.close()
 
 
 if __name__ == "__main__":
